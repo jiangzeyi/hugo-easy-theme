@@ -1,0 +1,27 @@
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      {{ range .Site.Params.menu }}
+        <li class="breadcrumb-item"><a href="{{.url}}">{{ .name }}</a></li>
+      {{ end }}
+    </ol>
+</nav>
+<header style="text-align:center">
+    {{ if .IsHome }}
+        <h2>{{ .Site.Title }}</h2>
+        <p>{{ .Site.Params.subtitle }}</p>
+    {{ else }}
+        <h2>{{ .Title }}</h2>
+        <p>
+          {{ if .Date }}
+            {{ .Date.Format "2006-01-02" }}
+          {{ end }}
+        </p>
+        <p>
+          {{ if .Params.tags }}
+            {{ range .Params.tags }}
+              #{{ .}}&nbsp;
+            {{ end }}
+          {{ end }}
+        </p>
+    {{ end }}
+</header>

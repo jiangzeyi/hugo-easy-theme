@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{{ .Site.BaseURL }}/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ .Site.BaseURL }}/css/theme.css" rel="stylesheet">
+    <title>首页</title>
+    <style>
+        html {
+            font-size: 20px;
+            color: #1a1a1a;
+            height: 100%;
+            background-color: #fdfdfd;
+        }
+        body {
+            margin: auto;
+            max-width: 50rem;
+            padding-left: 50px;
+            padding-right: 50px;
+            padding-top: 50px;
+            padding-bottom: 50px;
+            hyphens: auto;
+            background-color: #fdfdfd;
+            overflow-wrap: break-word;
+        }
+        a:visited {
+            color: #1a1a1a;
+        }
+        a {
+            text-decoration: none;
+            color: #1a1a1a;
+        }
+        ul > li {
+            margin-bottom: 10px;
+        }
+        footer {
+            margin-top: 20px;
+        }
+        
+    </style>
+    {{ with .OutputFormats.Get "rss" -}}
+        {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
+    {{ end -}}
+</head>
+<body >
+    {{/*  导航栏  */}}
+    {{ block "header" . }} 
+        {{ partial "partials/header.html" . }}
+    {{ end }}
+
+    <main>
+        {{ block "main" . }}{{ end }}
+    </main>
+
+    {{/*  页脚  */}}
+    {{ block "footer" . }}
+        {{ partial "partials/footer.html" . }}
+    {{ end }}
+
+</body>
+</html>

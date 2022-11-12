@@ -1,0 +1,24 @@
+html {
+    font-size: 20px;
+    color: #1a1a1a;
+    height: 100%;
+    background-color: #fdfdfd;
+}
+body {
+    max-width: 48rem;
+    margin: auto;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    hyphens: auto;
+    background-color: #fdfdfd;
+    overflow-wrap: break-word;
+}
+a:visited {
+    color: #1a1a1a;
+}
+a {
+    text-decoration: none;
+    color: #1a1a1a;
+}

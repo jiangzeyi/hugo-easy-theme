@@ -1,0 +1,14 @@
+{{ $pages := .Site.RegularPages }}
+{{ $paginator := .Paginate (where $pages "Section" "!=" "") }}
+<ul>
+    {{ range $paginator.Pages}}
+        <li><a href="{{ .Permalink }}">{{ .Date.Format "2006-01-02" }} &nbsp; {{ .Title }}</a></li>
+    {{ end }}
+</ul>
+{{ if $paginator.HasPrev }}
+    <a href="{{ $paginator.Prev.URL }}">&lt;&lt; Prev</a>
+{{ end }}
+&nbsp;
+{{ if $paginator.HasNext }}
+    <a href="{{ $paginator.Next.URL }}">Next &gt;&gt; </a>
+{{ end }}
