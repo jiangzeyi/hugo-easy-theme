@@ -36,7 +36,7 @@
             margin-bottom: 10px;
         }
         footer {
-            margin-top: 20px;
+            margin-top: 50px;
         }
         
     </style>
@@ -46,7 +46,11 @@
 </head>
 <body >
     {{/*  导航栏  */}}
-    {{ block "header" . }} 
+    {{ block "nav" . }} 
+        {{ partial "partials/nav.html" . }}
+    {{ end }}
+
+    {{ block "header" . }}
         {{ partial "partials/header.html" . }}
     {{ end }}
 
@@ -58,6 +62,5 @@
     {{ block "footer" . }}
         {{ partial "partials/footer.html" . }}
     {{ end }}
-
 </body>
 </html>

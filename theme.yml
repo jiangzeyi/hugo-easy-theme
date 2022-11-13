@@ -1,0 +1,40 @@
+baseURL: 'http://example.org/'
+languageCode: 'zh-CN'
+title: Title
+theme: easy-theme
+
+taxonomies:
+  tag: tags
+  series: series
+
+markup:
+  highlight:
+    anchorLineNos: false
+    codeFences: true
+    guessSyntax: false
+    hl_Lines: ""
+    hl_inline: false
+    lineAnchors: ""
+    lineNoStart: 1
+    lineNos: false
+    lineNumbersInTable: true
+    noClasses: true
+    noHl: false
+    style: monokai
+    tabWidth: 4
+
+params:
+  menu:
+    - name: 首页
+      url: /
+      weight: 10
+    - name: 标签
+      url : /tags
+      weight: 10
+    - name: RSS
+      url : /index.xml
+      weight: 10
+    - name: 关于
+      url : /about
+      weight: 10
+  subtitle: subtitle

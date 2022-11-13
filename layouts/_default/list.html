@@ -1,0 +1,17 @@
+{{ define "header" }}
+<header style="text-align:center">
+    {{ if .IsHome }}
+        <h2>{{ .Site.Title }}</h2>
+        <p>{{ .Site.Params.subtitle }}</p>
+    {{ else }}
+        <h2>
+          {{ if .Title }}
+            {{ .Title }}
+          {{ end }}
+        </h2>
+    {{ end }}
+</header>
+{{ end }}
+{{ define "main" }}
+    {{ partial "partials/page.html" . }}
+{{ end }}
