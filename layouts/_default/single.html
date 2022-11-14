@@ -18,5 +18,25 @@
 {{ end }}
 
 {{ define "main" }}
-    {{ partial "partials/content.html" . }}
+
+    <div>
+        {{ .Content }}
+    </div>
+    <div>
+        <div id="prev" style="float: left;">
+        {{ if .PrevInSection}}
+         <a href="{{ .PrevInSection.Permalink }}"><{{ .PrevInSection.Title }}</a>
+        {{ end }}
+        </div>
+        <div id="next" style="float: right;">
+            {{ if .NextInSection}}
+             <a href="{{ .NextInSection.Permalink }}">{{ .NextInSection.Title }}></a>
+            {{ end }}
+        </div>
+    </div>
 {{ end }}
+
+{{ define "footer" }}
+    {{/*  {{ partial "partials/toc.html" . }}  */}}
+{{ end }}
+
