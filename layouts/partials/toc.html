@@ -5,26 +5,33 @@
  <!-- a post can explicitly disable Table of Contents with toc: false -->
  {{ if  $has_headers  }}
      <!-- TOC header -->
-     {{ range $headers }}
-         {{ $header := . }}
-         {{ range first 1 (findRE "<h[1-6]" $header 1) }}
-             {{ range findRE "[1-6]" . 1 }}
-                 {{ $next_heading := (int .) }}
-                 <!-- generate li array of the proper depth -->
-                 {{ range seq $next_heading }}
-                     <ul>
-                 {{end}}
-                 {{ $base := ($.Page.File.LogicalName) }}
-                 {{ $anchorId := ($header | plainify | htmlEscape | urlize) }}
-                 {{ $href := delimit (slice $base $anchorId) "#" | string }}
-                 <a href="{{ relref $.Page $href }}">
-                     <li>{{ $header | plainify | htmlEscape }}</li>
-                 </a>
-                 <!-- close list -->
-                 {{ range seq $next_heading }}
-                     </ul>
-                 {{end}}
-             {{end}}
-         {{end}}
-     {{ end }}
+     <details class="toc">
+        <summary>目录</summary>
+        <div>
+        {{ range $headers }}
+            {{ $header := . }}
+            {{ range first 1 (findRE "<h[1-6]" $header 1) }}
+                {{ range findRE "[1-6]" . 1 }}
+                    {{ $next_heading := (int .) }}
+                    <!-- generate li array of the proper depth -->
+                    {{ range seq $next_heading }}
+                        <ul>
+                        <li>
+                    {{end}}
+                    {{ $base := ($.Page.File.LogicalName) }}
+                    {{ $anchorId := ($header | plainify | htmlEscape | urlize) }}
+                    {{ $href := delimit (slice $base $anchorId) "#" | string }}
+                    <a href="{{ relref $.Page $href }}" aria-label="{{ $header | plainify }}">
+                        {{ $header | plainify | htmlEscape }}
+                    </a>
+                    <!-- close list -->
+                    {{ range seq $next_heading }}
+                        </li>
+                        </ul>
+                    {{end}}
+                {{end}}
+            {{end}}
+        {{ end }}
+        </div>
+     </details>
  {{ end }}
