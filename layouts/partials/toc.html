@@ -12,7 +12,7 @@
                  {{ $next_heading := (int .) }}
                  <!-- generate li array of the proper depth -->
                  {{ range seq $next_heading }}
-                     <ul class="dropdown-menu">
+                     <ul>
                  {{end}}
                  {{ $base := ($.Page.File.LogicalName) }}
                  {{ $anchorId := ($header | plainify | htmlEscape | urlize) }}
