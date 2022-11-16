@@ -6,11 +6,10 @@
         {{ if .Title }}
             <h2>{{ .Title }}</h2>
         {{ end }}
-        <!-- 时间 -->
         {{ if not .IsSection }}
             {{ if .Date }}
                 <p>
-                    {{ .Date.Format "2006-01-02" }}
+                    {{ .Date.Format "January 2, 2006" }}
                 </p>
             {{ end }}
             {{ if .Params.tags  }}

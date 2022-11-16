@@ -1,2 +1,0 @@
-{{ $headers := findRE "<h[1-6].*?>(.|\n])+?</h[1-6]>" .Content }}
-{{ printf "%s" $headers}}

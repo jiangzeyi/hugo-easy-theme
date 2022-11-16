@@ -1,16 +1,14 @@
 {{ define "main" }}
     <div class="content">
         {{ .Content }}
-    </div>
-    <div>
         <div id="prev" style="float: left;">
-        {{ if .PrevInSection}}
-         <a href="{{ .PrevInSection.Permalink }}"><{{ .PrevInSection.Title }}</a>
-        {{ end }}
+            {{ if .PrevInSection}}
+             <a href="{{ .PrevInSection.Permalink }}"><{{ .PrevInSection.Title }}</a>
+            {{ end }}
         </div>
         <div id="next" style="float: right;">
             {{ if .NextInSection}}
-             <a href="{{ .NextInSection.Permalink }}">{{ .NextInSection.Title }}></a>
+                <a href="{{ .NextInSection.Permalink }}">{{ .NextInSection.Title }}></a>
             {{ end }}
         </div>
     </div>
