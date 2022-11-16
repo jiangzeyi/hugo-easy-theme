@@ -1,12 +1,25 @@
-<header style="text-align:center">
+<div class="header" style="text-align:center">
     {{ if .IsHome }}
-        <h2>{{ .Site.Title }}</h2>
-        <p>{{ .Site.Params.subtitle }}</p>
+        <h2>{{ .Site.Params.homeInfo.title }}</h2>
+        <p>{{ .Site.Params.homeInfo.subtitle }}</p>
     {{ else }}
-          {{ if .Title }}
-            <h2>
-              {{ .Title }}
-            </h2>
-          {{ end }}
+        {{ if .Title }}
+            <h2>{{ .Title }}</h2>
+        {{ end }}
+        <!-- 时间 -->
+        {{ if not .IsSection }}
+            {{ if .Date }}
+                <p>
+                    {{ .Date.Format "2006-01-02" }}
+                </p>
+            {{ end }}
+            {{ if .Params.tags  }}
+                <p>
+                    {{ range .Params.tags}}
+                        <a href="/tags/{{ . }}">#{{ . }} </a>
+                    {{ end}}
+                </p>
+            {{ end }}
+         {{ end}}
     {{ end }}
 </header>

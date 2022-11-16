@@ -6,45 +6,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="{{ .Site.BaseURL }}/css/bootstrap.min.css" rel="stylesheet">
     <link href="{{ .Site.BaseURL }}/css/theme.css" rel="stylesheet">
-    <title>首页</title>
-    <style>
-
-    </style>
+    <title>{{ .Site.Title }}</title>
     {{ with .OutputFormats.Get "rss" -}}
         {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
     {{ end -}}
 </head>
 <body>
-        <div class="container-fluid" >
-            <div class="row" id = "header">
-                <div class="col-md-2"></div> 
-                <div class="col-md-8">
-                    {{/*  导航栏  */}}
-                    {{ block "nav" . }} 
-                        {{ partial "partials/nav.html" . }}
-                    {{ end }}
-                    {{ block "header" . }}
-                        {{ partial "partials/header.html" . }}
-                    {{ end }}
-                </div>
-                </div>
-            <div class="row" id="main">
-                <div class="col-md-2">
-                    {{ block "toc" . }}  {{ end }}
-                </div>
-                <div class="col-md-8">
-                    {{ block "main" . }} {{ end }}
-                </div>
-            </div>
-            <div class="row" id="footer">
-                <div class="col-md-2"></div>
-                <div class="col-md-8">
-                    {{/*  页脚  */}}
-                    {{ block "footer" . }}
-                        {{ partial "partials/footer.html" . }}
-                    {{ end }}
-                </div>
-            </div>
-        </div>
+    <div class="container-sm" >
+        <header>
+        {{/*  导航栏  */}}
+        {{ block "nav" . }} 
+            {{ partial "partials/sitenav.html" . }}
+        {{ end }}
+        {{ block "header" . }}
+            {{ partial "partials/header.html" . }}
+        {{ end }}
+        </header>
+        
+        {{ block "main" . }} {{ end }}
+
+        <footer>
+            {{/*  页脚  */}}
+            {{ block "footer" . }}
+                {{ partial "partials/footer.html" . }}
+            {{ end }}
+        </footer>
+    </div>
 </body>
 </html>
